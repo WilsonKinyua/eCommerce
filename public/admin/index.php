@@ -15,18 +15,7 @@ if(!$_SESSION['username']) {
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                           WELCOME TO ADMIN DASHBOARD <?php echo $_SESSION['username']; ?>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                        </ol>
-                    </div>
-                </div>
+          
                 <!-- /.row -->
 
                 <?php 
@@ -55,6 +44,11 @@ if(!$_SESSION['username']) {
                 if(isset($_GET['add_product'])) {
 
                     include(TEMPLATE_BACK . "/add_product.php"); 
+
+                }
+                if(isset($_GET['edit_product'])) {
+
+                    include(TEMPLATE_BACK . "/edit_product.php"); 
 
                 }
 

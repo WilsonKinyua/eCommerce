@@ -10,6 +10,7 @@ defined("TEMPLATE_FRONT") ? null : define("TEMPLATE_FRONT", __DIR__ . DS . "temp
 
 defined("TEMPLATE_BACK") ? null : define("TEMPLATE_BACK", __DIR__ . DS . "templates/back");
 
+defined("UPLOAD_DIRECTORY") ? null : define("UPLOAD_DIRECTORY", __DIR__ . DS . "uploads");
 
 //================================== database connection
 defined("DB_HOST") ? null : define("DB_HOST", "localhost");
@@ -21,5 +22,5 @@ defined("DB_NAME") ? null : define("DB_NAME", "ecomm");
 $connection = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
 require_once("functions.php");
-// include("./public/cart.php");
+require_once("cart.php");
 ?>
