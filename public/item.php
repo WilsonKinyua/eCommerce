@@ -14,7 +14,9 @@ include(TEMPLATE_FRONT . DS . "header.php");
       
 
 
-       <?php  $query =  query("SELECT * FROM products WHERE product_id = " . mysqli_escape($_GET['id']) ." ");
+       <?php
+       
+         $query =  query("SELECT * FROM products WHERE product_id = " . mysqli_escape($_GET['id']) ." ");
             confirm($query);
 
             while($row = fetch_array($query)) : ?>

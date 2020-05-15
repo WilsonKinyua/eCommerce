@@ -63,7 +63,23 @@ if(!$_SESSION['username']) {
                     include(TEMPLATE_BACK . "/users.php"); 
 
                 }
-              
+                if(isset($_GET['add_user'])) {
+
+                    include(TEMPLATE_BACK . "/add_user.php"); 
+
+                }
+
+                if(isset($_GET['edit_user'])) {
+
+                    include(TEMPLATE_BACK . "/edit_user.php"); 
+
+                }
+
+                if(isset($_GET['orders'])) {
+
+                    include(TEMPLATE_BACK . "/orders.php"); 
+
+                }
                 
                 
                 ?>

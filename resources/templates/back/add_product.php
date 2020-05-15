@@ -10,7 +10,7 @@
 
 <form action="" method="post" enctype="multipart/form-data">
 
-<?php add_product(); ?>
+      <?php add_product(); ?>
 
   <div class="col-md-8">
     <div class="form-group">
@@ -73,10 +73,12 @@
       <hr>
       <input type="text" name="product_caption" class="form-control">
     </div> -->
-    
+    <hr>
     <!-- Product Image -->
     <div class="form-group">
+   
       <label for="product-title">Product Image</label>
+      <hr>
       <input type="file" name="file">
 
     </div>

@@ -6,6 +6,7 @@
         <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="index.php">Admin Area</a>
+    <a class="navbar-brand" href="../index.php">Home site</a>
 </div>
 
 <!-- Top Menu Items -->

@@ -8,10 +8,10 @@
 
     </h1>
     <p class="bg-success">
-        <?php //echo $message; ?>
+        <?php display_message(); ?>
     </p>
 
-    <a href="add_user.php" class="btn btn-primary btn-lg">Add User</a>
+    <a href="index.php?add_user" class="btn btn-primary btn-lg">Add User</a>
 
 
     <div class="col-md-12">
@@ -24,32 +24,14 @@
                     <th>Username</th>
                     <th>First Name</th>
                     <th>Last Name </th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <!-- <th>Email</th> -->
                 </tr>
             </thead>
             <tbody>
 
-                <?php //foreach ($users as $user) : ?>
-
-                    <tr>
-
-                        <td>2</td>
-                        <td><img class="admin-user-thumbnail user_image" src="placehold.it/62x62" alt=""></td>
-
-                        <td>Rico
-                            <div class="action_links">
-
-                                <a href="">Delete</a>
-                                <a href="">Edit</a>
-                            </div>
-                        </td>
-
-
-                        <td>Edwin</td>
-                        <td>Diaz</td>
-                    </tr>
-
-
-                <?php //endforeach; ?>
+                <?php display_users(); ?>
 
             </tbody>
         </table>
