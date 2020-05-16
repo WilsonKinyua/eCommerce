@@ -5,15 +5,15 @@
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="item active">
+        <?php get_active(); ?>
+
+        <?php get_slides(); ?>
+        <!-- <div class="item">
             <img class="slide-image" src="http://placehold.it/800x300" alt="">
         </div>
         <div class="item">
             <img class="slide-image" src="http://placehold.it/800x300" alt="">
-        </div>
-        <div class="item">
-            <img class="slide-image" src="http://placehold.it/800x300" alt="">
-        </div>
+        </div> -->
     </div>
     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>

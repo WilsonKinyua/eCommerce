@@ -101,7 +101,7 @@ return mysqli_fetch_array($result);
 
 function get_products() {
 
-  $query =  query("SELECT * FROM products");
+  $query =  query("SELECT * FROM products WHERE product_quantity >=1 ");
   confirm($query);
 
   while($row = fetch_array($query)) {
@@ -686,8 +686,182 @@ function edit_user() {
     }
 }
 
-// ======================================display orders function==================================
+// ======================================display reports function==================================
 
-function display_orders() {
+function get_reports(){
+
+    $query = query("SELECT * FROM reports");
+    confirm($query);
+
+    while($row = fetch_array($query)) {
+
+        $reports = <<<DELIMETER
+
+        <tr>
+        <td>{$row['report_id']}</td>
+        <td>{$row['product_id']}</td>
+        <td>{$row['order_id']}</td>
+        <td>{$row['product_price']}</td>
+        <td>{$row['product_title']}</td>
+        <td>{$row['product_quantity']}</td>
+        <td><a href="../../resources/templates/back/delete_report.php?id={$row['report_id']}"><button class="btn btn-danger">Delete</button></a></td>
+    </tr>
+
+
+
+DELIMETER;
+
+echo $reports;
+
+
+
+    }
+}
+
+
+/**=====================================================================functions slides */
+
+
+function add_slides() {
+
+    if(isset($_POST['add_slide'])) {
+
+
+        $slide_title        = mysqli_escape($_POST['slide_title']);
+        $slide_image        = mysqli_escape($_FILES['file']['name']);
+        $slide_image_loc    = mysqli_escape($_FILES['file']['tmp_name']);
+        
+        
+        if(empty($slide_title) || empty($slide_image)) {
+        
+        set_message('<div class="alert alert-ganger" role="alert">Fields cannot be empty!!!!!!!! </div>');
+        redirect("index.php?slides");
+        
+        } else {
+        
+        move_uploaded_file($slide_image_loc, UPLOAD_DIRECTORY . DS . $slide_image);
+        
+        $query = query("INSERT INTO slides(slide_title, slide_image) VALUES('{$slide_title}', '{$slide_image}')");
+        confirm($query);
+        set_message('<div class="alert alert-success" role="alert">Slide created!!!! </div>');
+
+        redirect("index.php?slides");
+
+                        }
+        
+        
+                }
+
+}
+
+function get_current_slides() {
+
+    $query = query("SELECT * FROM slides ORDER BY slide_id DESC LIMIT 1");
+    confirm($query);
+
+    while($row = fetch_array($query)) {
+        $slide_image = display_image($row['slide_image']);
+        $current_slides = <<<DELIMETER
+       
+            <img class='img-responsive' style="width: 800px; height: 400px;"  src="../../resources/{$slide_image}" alt="Image slide">
+
+
+DELIMETER;
+echo $current_slides;
+    }
     
+}
+
+
+function get_active() {
+
+    $query = query("SELECT * FROM slides ORDER BY slide_id DESC LIMIT 1");
+    confirm($query);
+
+    while($row = fetch_array($query)) {
+        $slide_image = display_image($row['slide_image']);
+        $active_slides = <<<DELIMETER
+
+        <div class="item active">
+            <img class="slide-image" src="../resources/{$slide_image}" alt="">
+        </div>
+
+
+DELIMETER;
+echo $active_slides;
+    }
+
+}
+
+
+function get_slides() {
+
+    $query = query("SELECT * FROM slides");
+    confirm($query);
+
+    while($row = fetch_array($query)) {
+        $slide_image = display_image($row['slide_image']);
+        $slides = <<<DELIMETER
+
+        <div class="item">
+            <img class="slide-image" src="../resources/{$slide_image}" alt="">
+        </div>
+
+
+DELIMETER;
+echo $slides;
+    }
+
+}
+
+
+
+function get_slide_thumbnails() {
+
+
+$query = query("SELECT * FROM slides ORDER BY slide_id ASC ");
+confirm($query);
+
+while($row = fetch_array($query)) {
+
+$slide_image = display_image($row['slide_image']);
+
+$slide_thumb_admin = <<<DELIMETER
+
+
+<div class="col-xs-6 col-md-3 image_container">
+    
+    <a href="index.php?delete_slide_id={$row['slide_id']}">
+        
+         <img style="width: 400px; height: 200px; margin-bottom: 20px;" class="img-responsive slide_image" src="../../resources/{$slide_image}" alt="">
+
+
+    </a>
+
+    <div style="height: 50px;">
+
+    <p>{$row['slide_title']}</p>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+DELIMETER;
+
+echo $slide_thumb_admin;
+
+
+    }
+
+
+
+
+
+
+
 }
